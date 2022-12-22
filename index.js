@@ -69,7 +69,6 @@ app.get("/redis/set", async (req, res) => {
 //缓存取值服务
 app.get("/redis/get", async (req, res) => {
   let begin = Date.now();
-  console.log(req.query.key);
   await RedisClient.get(req.query.key, res);
   const logger = log4js.getLogger('MVC-LOGGER');
   logger.info(commonUtil.printLog(req, Date.now() - begin, true));
