@@ -19,12 +19,13 @@ module.exports.set = async function (key, value, res) {
 
         logger.getLogger().info("connected");
 
-        await client.v4.set(key, value,function(err){
+        await client.v4.set(key, value, function (err) {
             if (err) {
                 logger.getLogger("ERROR-LOGGER").error('set err');
                 logger.getLogger("ERROR-LOGGER").error(err);
                 logger.getLogger("ERROR-LOGGER").error('set err after');
             }
+            res.send('error');
         });
         res.send(true);
 
@@ -32,7 +33,7 @@ module.exports.set = async function (key, value, res) {
     } catch (err) {
 
         logger.getLogger("ERROR-LOGGER").error(err);
-        res.send(false);
+        res.send('error');
     }
     return true;
 }
@@ -63,11 +64,14 @@ module.exports.get = async function (key, res) {
             if (v === null) {
                 v = 'nil';
             }
+            if (v == undefined) {
+                res.send('error');
+            }
             res.send(v);
 
         });
     } catch (err) {
-        res.send(false);
+        res.send('error');
         logger.getLogger("ERROR-LOGGER").error(err);
 
     }
