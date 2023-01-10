@@ -452,18 +452,14 @@
                     </td>
                     <td>
                         <input type="text" placeholder="value..." id="value" width="180px"
-                            style="width: 50px !important" />
+                            style="width: 80px !important" />
                     </td>
                     <td>
                         <div style="display: flex;">
-                            <button type="button" onclick="testRedisSet(false)" class="button_add" width="20px"
-                                style="width: 50px !important;margin: left 10px;">
-                                赋值
-                            </button>
-                            <button type="button" onclick="testRedisGet()" class="button_add" width="20px"
-                                style="width: 50px !important;margin: right 10px;">
-                                取值
-                            </button>
+                            <a onclick='testRedisSet(false)' href='javascript:void(0);'
+                                style="width: 40px !important">赋值</a>
+                            <a onclick='testRedisGet()' href='javascript:void(0);' style="width: 40px !important">取值</a>
+
                         </div>
 
                     </td>
