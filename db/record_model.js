@@ -20,7 +20,7 @@ module.exports = {
     pool.getConnection(function (err, connection) {
       let begin = Date.now();
       if (err) {
-        logger.getLogger("ERROR-LOGGER").error(err);
+        logger.getLogger("ERROR-LOGGER").error(JSON.stringify(err));
         resultData = JSON.stringify(commonUtil.dbAccessError());
         logger.getLogger("DAL-LOGGER").info(commonUtil.printPostLog(req, Date.now() - begin, false));
         return res.send(resultData);
@@ -30,7 +30,7 @@ module.exports = {
         // 执行查询语句
         connection.query(sql, (err, resultData) => {
           if (err) {
-            logger.getLogger("ERROR-LOGGER").error(err);
+            logger.getLogger("ERROR-LOGGER").error(JSON.stringify(err));
             resultData = JSON.stringify(commonUtil.dbAccessError());
             logger.getLogger("DAL-LOGGER").info(commonUtil.printPostLog(req, Date.now() - begin, false));
             res.send(resultData);
@@ -52,7 +52,7 @@ module.exports = {
     pool.getConnection(function (err, connection) {
       let begin = Date.now();
       if (err) {
-        logger.getLogger("ERROR-LOGGER").error(err);
+        logger.getLogger("ERROR-LOGGER").error(JSON.stringify(err));
         resultData = JSON.stringify(commonUtil.dbAccessError());
         logger.getLogger("DAL-LOGGER").info(commonUtil.printPostLog(req, Date.now() - begin, false));
         res.send(resultData);
@@ -64,7 +64,7 @@ module.exports = {
         // 执行插入语句
         connection.query(addSql, sqlParams, (err, resultData) => {
           if (err) {
-            logger.getLogger("ERROR-LOGGER").error(err);
+            logger.getLogger("ERROR-LOGGER").error(JSON.stringify(err));
             resultData = JSON.stringify(commonUtil.dbAccessError());
             logger.getLogger("DAL-LOGGER").info(commonUtil.printPostLog(req, Date.now() - begin, false));
             res.send(resultData);
@@ -86,7 +86,7 @@ module.exports = {
     pool.getConnection(function (err, connection) {
       let begin = Date.now();
       if (err) {
-        logger.getLogger("ERROR-LOGGER").error(err);
+        logger.getLogger("ERROR-LOGGER").error(JSON.stringify(err));
         resultData = JSON.stringify(commonUtil.dbAccessError());
         logger.getLogger("DAL-LOGGER").info(commonUtil.printPostLog(req, Date.now() - begin, false));
         res.send(resultData);
@@ -98,7 +98,7 @@ module.exports = {
         // 执行删除语句
         connection.query(deleteSql, sqlParam, (err, resultData) => {
           if (err) {
-            logger.getLogger("ERROR-LOGGER").error(err);
+            logger.getLogger("ERROR-LOGGER").error(JSON.stringify(err));
             resultData = JSON.stringify(dbAccessError.dbAccessError());
             logger.getLogger("DAL-LOGGER").info(commonUtil.printPostLog(req, Date.now() - begin, false));
             res.send(resultData);

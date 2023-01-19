@@ -5,7 +5,6 @@ const log4js = require('./util/log_util');
 const commonUtil = require('./util/common_util');
 const recordModel = require('./db/record_model');
 const RedisClient = require('./redis/redis');
-const moment = require('moment');
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -24,7 +23,9 @@ app.get("/", async (req, res) => {
 // 服务访问
 app.get("/service", async (req, res) => {
   let begin = Date.now();
-  let result = '欢迎使用云托管!服务版本：' + process.env.PUB_SERVICE_REVISION + '\n实例主机：' + process.env.HOSTNAME + '\n当前时间：' + moment(Date.now()).format('YYYY-MM-DD HH:mm:ss');
+  let version = process.env.PUB_SERVICE_REVISION == undefined ? 'express-demo' : process.env.PUB_SERVICE_REVISION;
+  let hostName = process.env.HOSTNAME == undefined ? 'express-demo' : process.env.HOSTNAME;
+  let result = '欢迎使用云托管!&服务版本：' + version + '&实例主机：' + hostName;
   res.send(result);
   const logger = log4js.getLogger('MVC-LOGGER');
   logger.info(commonUtil.printLog(req, Date.now() - begin, true));
