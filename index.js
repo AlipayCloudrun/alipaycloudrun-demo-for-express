@@ -76,7 +76,7 @@ app.get("/redis/get", async (req, res) => {
 });
 
 
-const port = process.env.PORT | 80;
+const port = process.env.PORT || 80;
 
 async function bootstrap() {
   app.listen(port, () => {
