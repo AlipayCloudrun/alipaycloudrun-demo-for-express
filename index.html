@@ -243,9 +243,10 @@
                 }),
             }).done(function (res) {
                 if (res.success === false || res.data === null) {
-                    $("#dbError").val(
-                        "数据库异常,请参照项目目录下README.md文件配置数据库"
-                    );
+                    const linkHtml=`<a href="https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-express#4%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5" 
+                        target="_blank" style="font-size:8px;color:red">报错了,点击查看解决方案</a>`;
+                    const output = document.getElementById('dbError');
+                    output.innerHTML=linkHtml;
                 }
                 testDatabase(false);
             });
@@ -286,9 +287,10 @@
                         $("#tab").append(str);
                     }
                 } else {
-                    $("#dbError").val(
-                        "数据库异常,请参照项目目录下README.md文件配置数据库"
-                    );
+                    const linkHtml=`<a href="https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-express#4%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5" 
+                        target="_blank" style="font-size:8px;color:red">报错了,点击查看解决方案</a>`;
+                    const output = document.getElementById('dbError');
+                    output.innerHTML=linkHtml;
                 }
             });
         }
@@ -300,9 +302,10 @@
                 url: "/database/deleteRecord?id=" + id + getParams(true),
                 success(res) {
                     if (res.success === false || res.data === null) {
-                        $("#dbError").val(
-                            "数据库异常,请参照项目目录下README.md文件配置数据库"
-                        );
+                        const linkHtml=`<a href="https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-express#4%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5" 
+                            target="_blank" style="font-size:8px;color:red">报错了,点击查看解决方案</a>`;
+                        const output = document.getElementById('dbError');
+                        output.innerHTML=linkHtml;
                     }
                     testDatabase(false);
                 },
@@ -334,9 +337,10 @@
                 async: false,
                 success(res) {
                     if (res == "error") {
-                        $("#redisError").val(
-                            "Redis异常,请参照项目目录下README.md文件配置Redis"
-                        );
+                        const linkHtml=`<a href="https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-express#5redis%E7%BC%93%E5%AD%98" 
+                            target="_blank" style="font-size:8px;color:red">报错了,点击查看解决方案</a>`;
+                        const output = document.getElementById('redisError');
+                        output.innerHTML=linkHtml;
                         $("#value").val("赋值失败");
                         result = false;
                     } else {
@@ -357,9 +361,10 @@
                 url: "/redis/get?key=" + key + getParams(true),
                 success(res) {
                     if (res === "error") {
-                        $("#redisError").val(
-                            "Redis异常,请参照项目目录下README.md文件配置Redis"
-                        );
+                        const linkHtml=`<a href="https://github.com/AlipayCloudrun/alipaycloudrun-demo-for-express#5redis%E7%BC%93%E5%AD%98" 
+                            target="_blank" style="font-size:8px;color:red">报错了,点击查看解决方案</a>`;
+                        const output = document.getElementById('redisError');
+                        output.innerHTML=linkHtml;
                         $("#value").val("取值失败");
                     } else {
                         $("#value").val(res);
