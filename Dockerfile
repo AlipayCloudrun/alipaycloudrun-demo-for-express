@@ -16,8 +16,8 @@ WORKDIR /app
 # 将包管理文件拷贝到运行时的工作目录中
 COPY package*.json /app/
 
-# npm 源，选用国内淘宝镜像源以提高下载速度
-RUN npm config set registry https://registry.npm.taobao.org/
+# npm 源，选用中国 npm 镜像源以提高下载速度
+RUN npm config set registry https://registry.npmmirror.com/
 
 # 暴露端口
 # 此处端口必须与构建小程序服务端时填写的服务端口和探活端口一致，不然会部署失败
