@@ -1,5 +1,5 @@
 # 采用alpine官方镜像做为运行时镜像
-FROM alpine:3.16
+FROM registry.cloudrun.cloudbaseapp.cn/cloudrun/alpine:3.16
 
 # 安装基础命令
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
